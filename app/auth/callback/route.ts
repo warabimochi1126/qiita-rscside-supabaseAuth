@@ -36,6 +36,9 @@ export async function GET(request: Request) {
     // set-cookieでブラウザ側にprovider_token渡すのもありだし、supabase.auth.exchanageCodeForSessionを実行した時点で貰えるアクセストークンからprovider_tokenを取得するのもあり
     response.cookies.set("test_provider_token", data.session?.provider_token!);
 
+    // exchangeCodeForSessionの中身がcookieに登録されてて、getSessionでcookieから取ってこれるからこっち側で頑張らなくて良い
+    console.log(data);
+
     return response;
     }
   }
